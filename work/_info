@@ -1,0 +1,590 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/cpen211-actualLab6
+vALU
+Z0 !s110 1572319597
+!i10b 1
+!s100 9eA:]ZP@1diV?FRj2dTHl3
+I8Ea<1nlC78IZ?e=zdoRmZ3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7
+Z3 w1572319467
+Z4 8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu.v
+Z5 FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu.v
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1572319597.000000
+Z8 !s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+n@a@l@u
+vALU_tb
+Z12 !s110 1572319598
+!i10b 1
+!s100 0i:Nd05ATOomFB<[m[SjF3
+IUhCNl9]eKhlM[HM=@Zi@j3
+R1
+R2
+R3
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu_tb.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu_tb.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z13 !s108 1572319598.000000
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/alu_tb.v|
+!i113 1
+R10
+R11
+n@a@l@u_tb
+vcpu
+R12
+!i10b 1
+!s100 6TZZkKlnB=LTUAFc7UXKS1
+INFX[E0IQnbP4O8OACmGe62
+R1
+R2
+R3
+Z14 8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu.v
+Z15 FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu.v
+L0 4
+R6
+r1
+!s85 0
+31
+R13
+Z16 !s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu.v|
+Z17 !s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu.v|
+!i113 1
+R10
+R11
+vcpu_tb
+R12
+!i10b 1
+!s100 PMXLSjYdTb^UYcNf7P>PG2
+IAfcN0fKK6fJ:52h`K>U?o1
+R1
+R2
+R3
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu_tb.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu_tb.v
+L0 1
+R6
+r1
+!s85 0
+31
+R13
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/cpu_tb.v|
+!i113 1
+R10
+R11
+vdatapath
+R12
+!i10b 1
+!s100 :WG2P`4CAdOLDAe2BW;F72
+IGe`im4aVPkD^P6QOd7j@:3
+R1
+R2
+R3
+Z18 8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath.v
+Z19 FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath.v
+L0 1
+R6
+r1
+!s85 0
+31
+R13
+Z20 !s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath.v|
+Z21 !s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath.v|
+!i113 1
+R10
+R11
+vdatapath_tb
+R12
+!i10b 1
+!s100 91=i<bkO2GfcM=`=Y^BPf0
+I2PYoS1XQGU]fO>:Fb18;10
+R1
+R2
+R3
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath_tb.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath_tb.v
+L0 1
+R6
+r1
+!s85 0
+31
+R13
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/datapath_tb.v|
+!i113 1
+R10
+R11
+vDec
+R12
+!i10b 1
+!s100 bA4;oEDVidP6NhCVMWFOA2
+I?FSk2E6?g7:oo5:kKde4e1
+R1
+R2
+R3
+Z22 8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile.v
+Z23 FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile.v
+L0 36
+R6
+r1
+!s85 0
+31
+R13
+Z24 !s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile.v|
+Z25 !s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile.v|
+!i113 1
+R10
+R11
+n@dec
+veq
+R12
+!i10b 1
+!s100 zSGXn5zcOQE2W6Po1k8ck2
+IbJG4Rn^Maf2fbe_A^;4[?1
+R1
+R2
+Z26 w1572319507
+Z27 8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top.v
+Z28 FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top.v
+L0 66
+R6
+r1
+!s85 0
+31
+R13
+Z29 !s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top.v|
+Z30 !s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top.v|
+!i113 1
+R10
+R11
+vFour_IN_Mux
+R12
+!i10b 1
+!s100 AjUH>;TmZm3nJmY;zC:5E1
+IG=PT@XeID?HZhXR`Vc@T[2
+R1
+R2
+R3
+R18
+R19
+L0 60
+R6
+r1
+!s85 0
+31
+R13
+R20
+R21
+!i113 1
+R10
+R11
+n@four_@i@n_@mux
+vFSM
+R12
+!i10b 1
+!s100 m85T[En^CnzI5A=W?`9T>0
+IPm=UZJ6m]n`a@l]a>5E743
+R1
+R2
+R3
+R14
+R15
+L0 106
+R6
+r1
+!s85 0
+31
+R13
+R16
+R17
+!i113 1
+R10
+R11
+n@f@s@m
+vInstruction_Dec
+R12
+!i10b 1
+!s100 dk]AFnBCV;nR8coOcTGAF2
+I;[Em4ecc4DXMaAVi8@BTV3
+R1
+R2
+R3
+R14
+R15
+L0 52
+R6
+r1
+!s85 0
+31
+R13
+R16
+R17
+!i113 1
+R10
+R11
+n@instruction_@dec
+vlab7_check_tb
+R12
+!i10b 1
+!s100 NdR6i6YCf5Rj<X`6^n5FR0
+IcAi8278]DL;MSQhn3mJih2
+R1
+R2
+R3
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_autograder_check.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_autograder_check.v
+L0 1
+R6
+r1
+!s85 0
+31
+R13
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_autograder_check.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_autograder_check.v|
+!i113 1
+R10
+R11
+vlab7_top
+R12
+!i10b 1
+!s100 n3Tkc^me=WS2YL<lYKKLK3
+IeQC1bUMnW>][L1VGg1b[@1
+R1
+R2
+R26
+R27
+R28
+L0 4
+R6
+r1
+!s85 0
+31
+R13
+R29
+R30
+!i113 1
+R10
+R11
+vlab7_top_tb
+Z31 !s110 1572319599
+!i10b 1
+!s100 i00L3^N?43oizThM9;KLe2
+Ig;K^Ckg@lG1?6E2@;J6WH2
+R1
+R2
+R26
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top_tb.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top_tb.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z32 !s108 1572319599.000000
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/lab7_top_tb.v|
+!i113 1
+R10
+R11
+vMUX
+R12
+!i10b 1
+!s100 Abn?]3Z1ZlmSYlaR^NlZ53
+IA[;mkmKJKSb5imP2HV_9L0
+R1
+R2
+R3
+R18
+R19
+L0 50
+R6
+r1
+!s85 0
+31
+R13
+R20
+R21
+!i113 1
+R10
+R11
+n@m@u@x
+vRAM
+R12
+!i10b 1
+!s100 In<V<=CAW_C<I;SP;81CN0
+I[<e6;BPG[4PB_F?RR94l81
+R1
+R2
+R26
+R27
+R28
+L0 82
+R6
+r1
+!s85 0
+31
+R13
+R29
+R30
+!i113 1
+R10
+R11
+n@r@a@m
+vregfile
+R12
+!i10b 1
+!s100 PICzA6g6af<L0I[__HUA]3
+IgS99I:3;cNl[943M;d6?c0
+R1
+R2
+R3
+R22
+R23
+L0 1
+R6
+r1
+!s85 0
+31
+R13
+R24
+R25
+!i113 1
+R10
+R11
+vregfile_tb
+R31
+!i10b 1
+!s100 oUKnVePiAT8j5[?l0K8dT2
+I=D4P@S4RSTRO5IP`L6ALa2
+R1
+R2
+R3
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile_tb.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile_tb.v
+L0 1
+R6
+r1
+!s85 0
+31
+R32
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/regfile_tb.v|
+!i113 1
+R10
+R11
+vregisterMUX
+R12
+!i10b 1
+!s100 G_cBaKfO4cKTE7oC886[b1
+Io4;0K<2YbziON^?jUG@3J1
+R1
+R2
+R3
+R22
+R23
+L0 62
+R6
+r1
+!s85 0
+31
+R13
+R24
+R25
+!i113 1
+R10
+R11
+nregister@m@u@x
+vshifter
+R31
+!i10b 1
+!s100 7:a;Wj?22WWo3^607i7SA1
+IHc;fSAKIVBfh:B7S=6H3M1
+R1
+R2
+R3
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter.v
+L0 1
+R6
+r1
+!s85 0
+31
+R32
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter.v|
+!i113 1
+R10
+R11
+vshifter_tb
+R0
+!i10b 1
+!s100 0UF9XAh_N0c^_A_H9X5;e2
+I4YAna[l0LJ103]1z@U?nj1
+R1
+R2
+R3
+8D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter_tb.v
+FD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter_tb.v
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Users/Roy Du/Documents/Homework/CPEN 211/labs/lab7/shifter_tb.v|
+!i113 1
+R10
+R11
+vsseg
+R12
+!i10b 1
+!s100 ;^PBeRJ^ndkDb<ceiG^La3
+Ib8N^iN:M9^Y[NmEGh:0<U1
+R1
+R2
+R26
+R27
+R28
+L0 134
+R6
+r1
+!s85 0
+31
+R13
+R29
+R30
+!i113 1
+R10
+R11
+vtriStateBuffer
+R12
+!i10b 1
+!s100 bUTj?e9jj9V8EB4WBg_b`3
+IQ0jCjHlS_i3c`?:Rg_i100
+R1
+R2
+R26
+R27
+R28
+L0 73
+R6
+r1
+!s85 0
+31
+R13
+R29
+R30
+!i113 1
+R10
+R11
+ntri@state@buffer
+vvDFF
+R12
+!i10b 1
+!s100 Rcf^^Y?7JB@]4S7L3NR2A2
+IA7KK1iR05VVOFBcN6L^Ro3
+R1
+R2
+R26
+R27
+R28
+L0 117
+R6
+r1
+!s85 0
+31
+R13
+R29
+R30
+!i113 1
+R10
+R11
+nv@d@f@f
+vvDFFE
+R12
+!i10b 1
+!s100 >9b`fzl?JE4cYFHmF2Oi[2
+IDa;RFYeHlJHmO9N^1;STe2
+R1
+R2
+R3
+R22
+R23
+L0 47
+R6
+r1
+!s85 0
+31
+R13
+R24
+R25
+!i113 1
+R10
+R11
+nv@d@f@f@e
+vwriteAndRead_Mux
+R12
+!i10b 1
+!s100 UZa5LB6ab=iH9BS:hGiKR1
+IA_<1_`j<5_6BU;lm93P@a1
+R1
+R2
+R3
+R14
+R15
+L0 85
+R6
+r1
+!s85 0
+31
+R13
+R16
+R17
+!i113 1
+R10
+R11
+nwrite@and@read_@mux
+vxor3
+R0
+!i10b 1
+!s100 YJF6YE9MONMz?C[c7V:]>1
+IXhKjXFYzROG@l9IiJhJFY0
+R1
+R2
+R3
+R4
+R5
+L0 68
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11

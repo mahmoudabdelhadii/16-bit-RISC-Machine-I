@@ -1,0 +1,18 @@
+MOV R0,X
+LDR R1, [R0]
+MOV R2, Y
+LDR R3, [R2]
+ADD R4, R1, R3, LSL #1
+MOV R5, #20
+STR R4, [R5,#1]
+LDR R6, [R5]
+LDR R7, [R5, #1]
+AND R0, R1, R7
+MVN R0, R0
+MOV R6, #10
+STR R6, [R2]
+HALT
+X:
+.word 0xA
+Y:
+.word 0x2
