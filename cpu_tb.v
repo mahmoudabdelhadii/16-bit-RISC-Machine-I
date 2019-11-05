@@ -41,12 +41,20 @@ cpu DUT(.clk(clk),.reset(reset), .mem_addr(mem_addr), .mem_cmd(mem_cmd), .read_d
 
 initial begin
 	//Add
-	reset = 0;
+	reset = 1'b1;
+	#10;
+	reset = 1'b0;
+	
+	#10;
+	
 	read_data = 16'b101_00_000_100_00_001;
-
+	#40;
+	@posedge(clk);
 	#40;
 	
+	#40;
 	//Moving the number 1 to register 0 (R0)
+	end
 	read_data = 16'b110_10_000_00000001;
 	
 	#10;
@@ -232,4 +240,7 @@ initial begin
 
 $stop;
 end
-endmodule
+
+
+
+endmodule 

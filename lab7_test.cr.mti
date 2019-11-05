@@ -53,16 +53,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	ALU_tb
 
-} {} {}} C:/Users/MAHMOUDABDELHADI/Documents/lab8/cpu.v {1 {vlog -work work -stats=none {C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module cpu
--- Compiling module Instruction_Dec
--- Compiling module writeAndRead_Mux
--- Compiling module FSM
-
-Top level modules:
-	cpu
-
 } {} {}} C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v {1 {vlog -work work -stats=none C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module lab8_top
@@ -97,7 +87,14 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	regfile_tb
 
-} {} {}} C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v {1 {vlog -work work -stats=none C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v
+} {} {}} C:/Users/MAHMOUDABDELHADI/Documents/lab8/cpu_tb.v {0 {vlog -work work -stats=none {C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module cpu_tb
+** Error: (vlog-13069) C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v(52): near "posedge": syntax error, unexpected posedge.
+** Error: (vlog-13069) C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v(58): near "=": syntax error, unexpected '='.
+** Error: C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v(58): (vlog-13205) Syntax error found in the scope following 'read_data'. Is there a missing '::'?
+
+} {4.0 7.0} {}} C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v {1 {vlog -work work -stats=none C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module lab7_top_tb
 

@@ -9,7 +9,7 @@ z2
 cModel Technology
 dD:/Users/Roy Du/Documents/Homework/CPEN 211/labs/cpen211-actualLab6
 vALU
-Z0 !s110 1572935463
+Z0 !s110 1572944533
 !i10b 1
 !s100 9eA:]ZP@1diV?FRj2dTHl3
 IMj87J`OiM2z9z4hLKdV?W1
@@ -23,7 +23,7 @@ Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1572935463.000000
+Z7 !s108 1572944533.000000
 Z8 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/alu.v|
 Z9 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/alu.v|
 !i113 1
@@ -31,7 +31,7 @@ Z10 o-work work
 Z11 tCvgOpt 0
 n@a@l@u
 vALU_tb
-Z12 !s110 1572935464
+R0
 !i10b 1
 !s100 0i:Nd05ATOomFB<[m[SjF3
 ID?Lb6bJDKVm1M0JDZNhkk1
@@ -45,7 +45,7 @@ R6
 r1
 !s85 0
 31
-Z13 !s108 1572935464.000000
+R7
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/alu_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/alu_tb.v|
 !i113 1
@@ -53,70 +53,70 @@ R10
 R11
 n@a@l@u_tb
 vcpu
-R12
+R0
 !i10b 1
-!s100 2G;NgjSE3iBR[0lAiiT^93
-IBZ=@AT>=Tk1;^TM4Z35[j1
+!s100 k1WU[]h5odna^dd8`D^]c2
+IhldQaJ1E`P<f92JB`e[e^2
 R1
 R2
-Z14 w1572933846
-Z15 8C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v
-Z16 FC:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v
+Z12 w1572944520
+Z13 8C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v
+Z14 FC:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v
 L0 40
 R6
 r1
 !s85 0
 31
-R13
-Z17 !s107 C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v|
-Z18 !s90 -reportprogress|300|-work|work|-stats=none|C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v|
+R7
+Z15 !s107 C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v|
+Z16 !s90 -reportprogress|300|-work|work|-stats=none|C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu.v|
 !i113 1
 R10
 R11
 vcpu_tb
-R12
+!s110 1572938346
 !i10b 1
-!s100 _A]5:R>i:T;11@H8n76]>3
-I^m8ILQQ:3I36R<DUiYnLW1
+!s100 G?U;@GlRIDOIN7`n3ZV0C2
+IG6L<E^NzQ>cHCg=JEDiY^0
 R1
 R2
-w1572935456
-8C:/Users/MAHMOUDABDELHADI/Documents/lab8/cpu_tb.v
-FC:/Users/MAHMOUDABDELHADI/Documents/lab8/cpu_tb.v
+w1572938275
+8C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v
+FC:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v
 L0 1
 R6
 r1
 !s85 0
 31
-R13
-!s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/cpu_tb.v|
-!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/cpu_tb.v|
+!s108 1572938346.000000
+!s107 C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:\Users\MAHMOUDABDELHADI\Documents\lab8\cpu_tb.v|
 !i113 1
 R10
 R11
 vdatapath
-R12
+R0
 !i10b 1
 !s100 4liF4L^YE^O]CXc6lCmW<2
 IQ[IhI?KiOOd2dPE6Q2FeK1
 R1
 R2
-Z19 w1572921056
-Z20 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v
-Z21 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v
+Z17 w1572921056
+Z18 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v
+Z19 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v
 L0 1
 R6
 r1
 !s85 0
 31
-R13
-Z22 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v|
-Z23 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v|
+R7
+Z20 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v|
+Z21 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath.v|
 !i113 1
 R10
 R11
 vdatapath_tb
-R12
+R0
 !i10b 1
 !s100 91=i<bkO2GfcM=`=Y^BPf0
 IO3zJ`3A<jce[jB6K4cGbh0
@@ -130,28 +130,28 @@ R6
 r1
 !s85 0
 31
-R13
+R7
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/datapath_tb.v|
 !i113 1
 R10
 R11
 vDec
-R12
+Z22 !s110 1572944534
 !i10b 1
 !s100 bA4;oEDVidP6NhCVMWFOA2
 Id9z9I1W2O7gTg>[c:nJ;d1
 R1
 R2
-Z24 w1572903798
-Z25 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile.v
-Z26 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile.v
+Z23 w1572903798
+Z24 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile.v
+Z25 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile.v
 L0 36
 R6
 r1
 !s85 0
 31
-R13
+Z26 !s108 1572944534.000000
 Z27 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile.v|
 Z28 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile.v|
 !i113 1
@@ -159,100 +159,100 @@ R10
 R11
 n@dec
 veq
-Z29 !s110 1572935465
+R22
 !i10b 1
 !s100 <d8PFim21;cbS<jGFJcR30
 I3cG`39jnNFZ2]DV6j=O2A3
 R1
 R2
-Z30 w1572934345
-Z31 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v
-Z32 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v
+Z29 w1572934345
+Z30 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v
+Z31 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v
 L0 70
 R6
 r1
 !s85 0
 31
-Z33 !s108 1572935465.000000
-Z34 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v|
-Z35 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v|
+R26
+Z32 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v|
+Z33 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_top.v|
 !i113 1
 R10
 R11
 vFour_IN_Mux
-R12
+R0
 !i10b 1
 !s100 AjUH>;TmZm3nJmY;zC:5E1
 Id=93i1o2b?U[3D5e5[WQ=0
 R1
 R2
+R17
+R18
 R19
-R20
-R21
 L0 60
 R6
 r1
 !s85 0
 31
-R13
-R22
-R23
+R7
+R20
+R21
 !i113 1
 R10
 R11
 n@four_@i@n_@mux
 vFSM
-R12
+R0
 !i10b 1
-!s100 W7N0OO1N]Dm2SMmRG5QCN1
-IK1;B`keo6fi0E4?MN:<[92
+!s100 2X7zLL1CL;E]2BINQLin;1
+IV8YXhC9:^IhGZTS?zng@;0
 R1
 R2
+R12
+R13
 R14
-R15
-R16
 L0 155
 R6
 r1
 !s85 0
 31
-R13
-R17
-R18
+R7
+R15
+R16
 !i113 1
 R10
 R11
 n@f@s@m
 vInstruction_Dec
-R12
+R0
 !i10b 1
-!s100 cSO@Nj5;l9NU`3idmeZBf0
-IO_G:UeP]94dl;lABacfR61
+!s100 Z_dIMMOKQF8[_:Hn0hRzk2
+IE[C4OZ>V[d_^]o44X3CXE3
 R1
 R2
+R12
+R13
 R14
-R15
-R16
 L0 98
 R6
 r1
 !s85 0
 31
-R13
-R17
-R18
+R7
+R15
+R16
 !i113 1
 R10
 R11
 n@instruction_@dec
 vlab7_check_tb
-R12
+R0
 !i10b 1
 !s100 NdR6i6YCf5Rj<X`6^n5FR0
 IA_L4Pk_cH:F_JdX?;WPP52
 R1
 R2
-Z36 w1572903797
+Z34 w1572903797
 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_autograder_check.v
 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_autograder_check.v
 L0 1
@@ -260,7 +260,7 @@ R6
 r1
 !s85 0
 31
-R13
+R7
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_autograder_check.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_autograder_check.v|
 !i113 1
@@ -273,7 +273,7 @@ vlab7_top
 IVA=ZKW]9ljcF27^zIJ3z63
 R1
 R2
-R36
+R34
 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top.v
 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top.v
 L0 4
@@ -288,13 +288,13 @@ r1
 R10
 R11
 vlab7_top_tb
-R12
+R22
 !i10b 1
 !s100 i00L3^N?43oizThM9;KLe2
 I8im2]FOIR_M=CkYS7U_Y]2
 R1
 R2
-R36
+R34
 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v
 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v
 L0 1
@@ -302,14 +302,14 @@ R6
 r1
 !s85 0
 31
-R13
+R26
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab7_top_tb.v|
 !i113 1
 R10
 R11
 vlab8_check_tb
-R29
+!s110 1572944535
 !i10b 1
 !s100 f7SHIXQSI1il1L?::d=1L3
 Igc6iFje5QJQFzmdd<`hZ@0
@@ -323,14 +323,14 @@ R6
 r1
 !s85 0
 31
-R33
+R26
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_autograder_check.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_autograder_check.v|
 !i113 1
 R10
 R11
 vlab8_stage2_tb
-R29
+R22
 !i10b 1
 !s100 H8`cJSWXmVk]OjNOOGoFG2
 I[oHhV[QZ4850o@7fL;Zc_0
@@ -344,106 +344,106 @@ R6
 r1
 !s85 0
 31
-R33
+R26
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_stage2_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/lab8_stage2_tb.v|
 !i113 1
 R10
 R11
 vlab8_top
-R29
+R22
 !i10b 1
 !s100 6]IIY7XUgidZEhdbbC5if0
 IY6cz`H?924Do_@V@_]@3;3
 R1
 R2
+R29
 R30
 R31
-R32
 L0 4
 R6
 r1
 !s85 0
 31
+R26
+R32
 R33
-R34
-R35
 !i113 1
 R10
 R11
 vMUX
-R12
+R0
 !i10b 1
 !s100 Abn?]3Z1ZlmSYlaR^NlZ53
 ITZ>c9O;1dKTT`2J[=;9lU2
 R1
 R2
+R17
+R18
 R19
-R20
-R21
 L0 50
 R6
 r1
 !s85 0
 31
-R13
-R22
-R23
+R7
+R20
+R21
 !i113 1
 R10
 R11
 n@m@u@x
 vRAM
-R29
+R22
 !i10b 1
 !s100 ea:df]DDaC>Q4jfE[0Qbi2
 IZAzZR8kS7M5PmaYg3HQlm2
 R1
 R2
+R29
 R30
 R31
-R32
 L0 86
 R6
 r1
 !s85 0
 31
+R26
+R32
 R33
-R34
-R35
 !i113 1
 R10
 R11
 n@r@a@m
 vregfile
-R12
+R22
 !i10b 1
 !s100 PICzA6g6af<L0I[__HUA]3
 IV0TYI=DiPG3c_9`iETSe43
 R1
 R2
+R23
 R24
 R25
-R26
 L0 1
 R6
 r1
 !s85 0
 31
-R13
+R26
 R27
 R28
 !i113 1
 R10
 R11
 vregfile_tb
-R29
+R22
 !i10b 1
 !s100 oUKnVePiAT8j5[?l0K8dT2
 I?gC;lj6>KFJ8I<`oQGze_1
 R1
 R2
-R24
+R23
 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile_tb.v
 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile_tb.v
 L0 1
@@ -451,28 +451,28 @@ R6
 r1
 !s85 0
 31
-R13
+R26
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/regfile_tb.v|
 !i113 1
 R10
 R11
 vregisterMUX
-R12
+R22
 !i10b 1
 !s100 G_cBaKfO4cKTE7oC886[b1
 I=LZ>DWVm`YUD34Od?BHYO1
 R1
 R2
+R23
 R24
 R25
-R26
 L0 62
 R6
 r1
 !s85 0
 31
-R13
+R26
 R27
 R28
 !i113 1
@@ -480,13 +480,13 @@ R10
 R11
 nregister@m@u@x
 vshifter
-R29
+R22
 !i10b 1
 !s100 7:a;Wj?22WWo3^607i7SA1
 ImDcW>DQLIiV1NmS4HJh[c2
 R1
 R2
-R24
+R23
 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter.v
 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter.v
 L0 1
@@ -494,20 +494,20 @@ R6
 r1
 !s85 0
 31
-R33
+R26
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter.v|
 !i113 1
 R10
 R11
 vshifter_tb
-R29
+R22
 !i10b 1
 !s100 0UF9XAh_N0c^_A_H9X5;e2
 I6HizFE3=hC4L8EXH<1LQ]1
 R1
 R2
-R24
+R23
 8C:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter_tb.v
 FC:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter_tb.v
 L0 1
@@ -515,93 +515,93 @@ R6
 r1
 !s85 0
 31
-R33
+R26
 !s107 C:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter_tb.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/MAHMOUDABDELHADI/Documents/lab8/shifter_tb.v|
 !i113 1
 R10
 R11
 vsseg
-R29
+R22
 !i10b 1
 !s100 ?fOn<876UgE70?Sm@c`H:2
 IRKXo5NQ37IFIHWAVjG6@n3
 R1
 R2
+R29
 R30
 R31
-R32
 L0 138
 R6
 r1
 !s85 0
 31
+R26
+R32
 R33
-R34
-R35
 !i113 1
 R10
 R11
 vtriStateBuffer
-R29
+R22
 !i10b 1
 !s100 JU6O_MOgVk^m0^N_WW>J@3
 Io`^V][DEY00eJ1hc492oL0
 R1
 R2
+R29
 R30
 R31
-R32
 L0 77
 R6
 r1
 !s85 0
 31
+R26
+R32
 R33
-R34
-R35
 !i113 1
 R10
 R11
 ntri@state@buffer
 vvDFF
-R29
+R22
 !i10b 1
 !s100 7@M1J<I8zDUIo1J1KU=fH1
 IaQ0Z__Hj285HV@zT_i]5M3
 R1
 R2
+R29
 R30
 R31
-R32
 L0 121
 R6
 r1
 !s85 0
 31
+R26
+R32
 R33
-R34
-R35
 !i113 1
 R10
 R11
 nv@d@f@f
 vvDFFE
-R12
+R22
 !i10b 1
 !s100 >9b`fzl?JE4cYFHmF2Oi[2
 Inel<C5[h]R>P3VU`^SGd83
 R1
 R2
+R23
 R24
 R25
-R26
 L0 47
 R6
 r1
 !s85 0
 31
-R13
+R26
 R27
 R28
 !i113 1
@@ -609,23 +609,23 @@ R10
 R11
 nv@d@f@f@e
 vwriteAndRead_Mux
-R12
+R0
 !i10b 1
 !s100 P7MAEodfYbYK5K;e_o2Z=1
 I;YKS61>3<dCM754h@W3Q72
 R1
 R2
+R12
+R13
 R14
-R15
-R16
 L0 132
 R6
 r1
 !s85 0
 31
-R13
-R17
-R18
+R7
+R15
+R16
 !i113 1
 R10
 R11

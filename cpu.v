@@ -45,7 +45,7 @@ output [8:0] mem_addr;
 output [1:0] mem_cmd;
 output HALTLED;
 
-wire [2:0] cond; //new
+wire [2:0] condition; //new
 
 wire [2:0] readAndwrite,opcode;
 wire [1:0] shift, op;
@@ -72,9 +72,9 @@ vDFFE #(16) Instruction_Register(.clk(clk), .en(load_ir), .in(read_data), .out(I
 
 Instruction_Dec ID1(.in(Ireg_out), .nsel(FSM_out[11:9]),	//inputs
 					.opcode(opcode), .op(op),				//to state machine
-					.shift(shift), .sximm8(sximm8), .sximm5(sximm5), .readOrWrite(readAndwrite),.cond(cond));	//to Datapath
+					.shift(shift), .sximm8(sximm8), .sximm5(sximm5), .readOrWrite(readAndwrite),.condition(condition));	//to Datapath
 
-FSM stateMachine(.opcode(opcode),.op(op),.reset(reset),.out(FSM_out),.clk(clk),.mem_cmd(mem_cmd), .addr_sel(addr_sel),.load_pc(load_pc),.reset_pc(reset_pc),.load_addr(load_addr), .load_ir(load_ir),.Z_out(Z_out),.N(N),.V(V),.Z(Z),.cond(cond),.psel(psel),.HALTLED(HALTLED));
+FSM stateMachine(.opcode(opcode),.op(op),.reset(reset),.out(FSM_out),.clk(clk),.mem_cmd(mem_cmd), .addr_sel(addr_sel),.load_pc(load_pc),.reset_pc(reset_pc),.load_addr(load_addr), .load_ir(load_ir),.Z_out(Z_out),.N(N),.V(V),.Z(Z),.condition(condition),.psel(psel),.HALTLED(HALTLED));
 
 
 datapath DP(.mdata(read_data), .sximm8(sximm8), .sximm5(sximm5), .PC(PC), .writenum(readAndwrite), .write(FSM_out[0]), 
@@ -95,12 +95,12 @@ MUX #(9) memSelect(.a(PC), .b(dataAddress),.sel(addr_sel),.out(mem_addr));
 
 
 endmodule
-module Instruction_Dec(in, nsel, opcode, op, shift, sximm8, sximm5, readOrWrite,cond);
+module Instruction_Dec(in, nsel, opcode, op, shift, sximm8, sximm5, readOrWrite,condition);
 input [15:0] in;
 input [2:0] nsel;
 
 output [1:0] op,shift;
-output [2:0] cond;
+output [2:0] condition;
 reg [1:0] shift;
 output [2:0] opcode;
 output [15:0] sximm8; //specify datapath size
@@ -112,7 +112,7 @@ wire [2:0] rORw;
 
 assign opcode = in[15:13];
 assign op = in [12:11];
-assign cond = in[10:8];
+assign condition = in[10:8];
 assign sximm8 = {{8{in[7]}}, in [7:0] };
 assign sximm5 = {{11{in[4]}}, in [4:0] };
 assign readOrWrite = rORw;
@@ -152,16 +152,16 @@ endmodule
 
 
 
-module FSM(opcode,op,reset,out,clk,mem_cmd, addr_sel,load_pc,reset_pc, load_addr,cond, load_ir,Z_out,N,V,Z,psel,HALTLED);
+module FSM(opcode,op,reset,out,clk,mem_cmd, addr_sel,load_pc,reset_pc, load_addr,condition, load_ir,Z_out,N,V,Z,psel,HALTLED);
 input clk;
 input[2:0] opcode;
 input[1:0] op;
 input reset;
 
 
-input [2:0] Z_out,cond;
+input [2:0]condition;
 input N,V,Z;
-
+output[2:0] Z_out;
 output  reg HALTLED;  //LEDR[8]
 
 output[11:0] out;
@@ -178,7 +178,7 @@ reg[4:0] state;
 
 always@ (posedge clk) begin
 	
-	casex ({state,reset,opcode,op,cond})
+	casex ({state,reset,opcode,op,condition})
 		
 		//reset
 		14'bxxxxx_1_xxx_xx_xxx : state = `reset; //reset state is still 00000
@@ -187,7 +187,7 @@ always@ (posedge clk) begin
 		{`reset,9'b0_xxx_xx_xxx} : state = `IF1;	//advance to IF1
 
 		//state 01000 IF1
-		{`IF1,9'b0_xxx_xx_xxx} : state = `IF2;	//advance to IF2
+		{`IF1,9'bx_xxx_xx_xxx} : state = `IF2;	//advance to IF2
 
 		//state 10000 IF2
 		{`IF2,9'b0_xxx_xx_xxx} : state = `updatePC;	//advance to UpdatePC
