@@ -161,7 +161,7 @@ input reset;
 
 input [2:0]condition;
 input N,V,Z;
-output[2:0] Z_out;
+input[2:0] Z_out;
 output  reg HALTLED;  //LEDR[8]
 
 output[11:0] out;
@@ -187,7 +187,7 @@ always@ (posedge clk) begin
 		{`reset,9'b0_xxx_xx_xxx} : state = `IF1;	//advance to IF1
 
 		//state 01000 IF1
-		{`IF1,9'bx_xxx_xx_xxx} : state = `IF2;	//advance to IF2
+		{`IF1,9'b0_xxx_xx_xxx} : state = `IF2;	//advance to IF2
 
 		//state 10000 IF2
 		{`IF2,9'b0_xxx_xx_xxx} : state = `updatePC;	//advance to UpdatePC
