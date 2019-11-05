@@ -24,9 +24,7 @@
 
 `define BL1 5'b00010
 `define BL2 5'b00011
-`define BX1 5'b10011
-`define BX2 5'b10101
-`define BX3 5'b10111
+`define BX 5'b10011
 `define BLX 5'B11101
 
 `define BEQ 5'b10010
@@ -37,13 +35,12 @@
 
 
 
-module cpu(clk,reset, mem_addr, mem_cmd, read_data, write_data,HALTLED);
+module cpu(clk,reset, mem_addr, mem_cmd, read_data, write_data);
 input clk, reset;
 input [15:0] read_data;
 output [15:0] write_data;
 output [8:0] mem_addr;
 output [1:0] mem_cmd;
-output HALTLED;
 
 wire [2:0] cond; //new
 
@@ -57,16 +54,14 @@ wire [8:0] dataAddress;
 
 wire[2:0] Z_out;
 
-wire [1:0]psel; //new for PC mux
+wire psel; //new for PC mux
 wire N,V,Z;
 
 wire load_pc, load_addr, load_ir, reset_pc, addr_sel;
 
 wire [8:0] next_pc,PC, intoOne,afterDataAddress;
 
-wire HALTLED;
-
-assign intoOne = (psel==2'b11)?(PC+1+sximm8):(psel==2'b00)?PC + 1:(psel==2'b10)?write_data:2'bxx;
+assign intoOne = psel?(PC+1+sximm8):PC + 1;
 
 vDFFE #(16) Instruction_Register(.clk(clk), .en(load_ir), .in(read_data), .out(Ireg_out)) ;
 
@@ -74,12 +69,12 @@ Instruction_Dec ID1(.in(Ireg_out), .nsel(FSM_out[11:9]),	//inputs
 					.opcode(opcode), .op(op),				//to state machine
 					.shift(shift), .sximm8(sximm8), .sximm5(sximm5), .readOrWrite(readAndwrite),.cond(cond));	//to Datapath
 
-FSM stateMachine(.opcode(opcode),.op(op),.reset(reset),.out(FSM_out),.clk(clk),.mem_cmd(mem_cmd), .addr_sel(addr_sel),.load_pc(load_pc),.reset_pc(reset_pc),.load_addr(load_addr), .load_ir(load_ir),.Z_out(Z_out),.N(N),.V(V),.Z(Z),.cond(cond),.psel(psel),.HALTLED(HALTLED));
+FSM stateMachine(.opcode(opcode),.op(op),.reset(reset),.out(FSM_out),.clk(clk),.mem_cmd(mem_cmd), .addr_sel(addr_sel),.load_pc(load_pc),.reset_pc(reset_pc),.load_addr(load_addr), .load_ir(load_ir),.Z_out(Z_out),.N(N),.V(V),.Z(Z),.cond(cond),.psel(psel));
 
 
 datapath DP(.mdata(read_data), .sximm8(sximm8), .sximm5(sximm5), .PC(PC), .writenum(readAndwrite), .write(FSM_out[0]), 
 			.readnum(readAndwrite), .clk(clk), .asel(FSM_out[3]), .bsel(FSM_out[4]), .vsel(FSM_out[4:3]), .loadb(FSM_out[6]), .loada(FSM_out[5]), .loadc(FSM_out[7]), .loads(FSM_out[8]), .shift(shift), .ALUop(FSM_out[6:5]), 
-			.datapath_out(write_data), .Z_out(Z_out), .N(N), .V(V), .Z(Z));
+			.datapath_out(write_data), .Z_out(/*Z_out*/), .N(/*N*/), .V(/*V*/), .Z(/*Z*/));
 			
 
 MUX #(9) PCMUX(.a(9'b0),.b(intoOne), .sel(reset_pc),.out(next_pc));
@@ -152,7 +147,7 @@ endmodule
 
 
 
-module FSM(opcode,op,reset,out,clk,mem_cmd, addr_sel,load_pc,reset_pc, load_addr,cond, load_ir,Z_out,N,V,Z,psel,HALTLED);
+module FSM(opcode,op,reset,out,clk,mem_cmd, addr_sel,load_pc,reset_pc, load_addr,cond, load_ir,Z_out,N,V,Z);
 input clk;
 input[2:0] opcode;
 input[1:0] op;
@@ -162,13 +157,12 @@ input reset;
 input [2:0] Z_out,cond;
 input N,V,Z;
 
-output  reg HALTLED;  //LEDR[8]
 
 output[11:0] out;
 output addr_sel,load_pc,reset_pc,load_addr, load_ir;
 output [1:0] mem_cmd;
 
-output reg [1:0]psel;
+output reg psel;
 
 reg[11:0] out;
 reg addr_sel,load_pc,reset_pc,load_addr, load_ir;
@@ -209,8 +203,8 @@ always@ (posedge clk) begin
 		{`decode,9'b0_010_00_100} : state = `BLE;
 
 		{`decode,9'b0_010_11_xxx} : state = `BL1;
-		{`decode,9'b0_010_00_xxx} : state = `BX1;
-		{`decode,9'b0_010_10_xxx} : state = `BL1;
+		{`decode,9'b0_010_00_xxx} : state = `BX;
+		{`decode,9'b0_010_10_xxx} : state = `BLX;
 		
 		//  ^^^ changed them to start taking messages from the decode state
 
@@ -232,25 +226,12 @@ always@ (posedge clk) begin
 		{`BLE,9'b0_xxx_xx_xxx} : state = `IF1;
 
 		//BL1 TO BL2
-		{`BL1,9'b0_010_11_xxx} : state = `BL2; //BL2
-		{`BX1,9'b0_010_x0_xxx} : state = `BX2;
-		
-		//BLX BL1 to BX1
-		{`BL1,9'b0_010_10_xxx} : state = `BX1;
-		//BX2 to BX3
-		{`BX2,9'b0_010_00_xxx} : state = `BX3;
-		
-		
-		//BL2 to IF1						stage 2 to IF1
+		{`BL1,9'b0_xxx_xx_xxx} : state = `BL2; //BL2
+
+		//BL2 to IF1
 
 		{`BL2,9'b0_xxx_xx_xxx} : state = `IF1; //BL2
-		
-		
-		
-		{`BX3,9'b0_xxx_xx_xxx} : state = `IF1; //BX
 
-
-		
 		
 		//state 00101 Load A
 		{`LA,9'b0_xxx_xx_xxx} : state = `ALU;	//always goes to ALU
@@ -293,7 +274,7 @@ always@ (posedge clk) begin
 		default : state = 5'bxxxxx;
 	endcase
 	
-	case ({state,N,V,Z})
+	case (state,N,V,Z)
 
 		//reset
 		{`reset,3'bxxx} : begin 
@@ -301,13 +282,12 @@ always@ (posedge clk) begin
 			//w = 2'b01;
 		reset_pc = 1;
 		load_pc  = 1;
-		HALTLED=1'b0;
 		end
 		
 		//IF1
 		{`IF1,3'bxxx} : begin
 		out = 12'b000_00000000_0;
-		reset_pc = 1'b0;
+		reset_pc = 0;
 		load_pc = 0;
 		addr_sel = 1;
 		mem_cmd = `MREAD;
@@ -391,76 +371,55 @@ always@ (posedge clk) begin
 		
 		//HALT
 		{`HALT,3'bxxx} : begin
-		HALTLED = 1'b1;
 		end
 		
 		{`B,3'bxxx}: begin
-		psel= 2'b00;
+		psel= 1'b0;
 		end
 
 		{`BEQ,3'bxx1}: begin  //BEQ  Z=1
-		psel= 2'b11;
+		psel= 1'b1;
 		end
 		{`BEQ,3'bxx0}: begin  //BEQ  Z=0
-		psel= 2'b00;
+		psel= 1'b0;
 		end
 
 		{`BNE,3'bxx0}: begin  //BNE  Z=0
-		psel= 2'b11;
+		psel= 1'b1;
 		end
 		{`BNE,3'bxx1}: begin  //BNE  Z=0
-		psel= 2'b00;
+		psel= 1'b0;
 		end
 
 		{`BLT,3'b10x}: begin  //BLT N!=V
-		psel= 2'b11;
+		psel= 1'b1;
 		end
 		{`BLT,3'b01x}: begin  //BLT N!=V
-		psel= 2'b11;
+		psel= 1'b1;
 		end
 
 		{`BLT,3'b11x}: begin  //BLT N!=V
-		psel= 2'b00;
+		psel= 1'b0;
 		end
 		{`BLT,3'b00x}: begin  //BLT N!=V
-		psel= 2'b00;
+		psel= 1'b0;
 		end
 
 		{`BLE,3'b10x}: begin  // BLE N!=V 
-		psel= 2'b11;
+		psel= 1'b1;
 		end
 
 		{`BLE,3'b01x}: begin  // BLE N!=V 
-		psel= 2'b11;
+		psel= 1'b1;
 		end
 
 		{`BLE,3'bxx1}: begin  // BLE  Z=1
-		psel= 2'b11;
+		psel= 1'b1;
 		end
 		{`BL1,3'bxxx}: begin  // BL  R7=PC
-		out = 12'b001_00000000_1;
+		out = 12'b111_00000000_1;
 		end
 
-		{`BL2,3'bxxx}: begin  // BL  PC PC+1+sx(imm8)
-		psel=2'b11;
-		end
-
-		
-		{`BX1,3'bxxx}: begin  // BL  R7=PC
-		out = {(7'b010_0010), 2'b01, (3'b0)};  //GET number from reg r7(Rd) bsel=0,asel=1,
-		
-		end
-
-		{`BX2,3'bxxx}: begin  // BL  R7=PC
-		out = {3'b000_,1'b0,1'b1,op,out[4],out[3],3'b00_0};   //ALU
-		load_pc= 1;
-		end
-		
-		{`BX3,3'bxxx}: begin  
-		psel=2'b10;					 //LOADS DATA OUT TO PC REGISTER
-		load_pc= 1;
-	
-		end
 
 		default : out = 12'b000000000000;
 		

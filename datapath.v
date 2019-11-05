@@ -3,7 +3,7 @@ module datapath(/*datapath_in, */mdata, sximm8, sximm5, PC, writenum, write, rea
 	input [2:0] writenum, readnum;	//define 3 bit inputs
 	input [1:0] shift, ALUop, vsel;	//define 2 bit inputs
 	input [15:0] mdata, sximm8, sximm5/* datapath_in*/;	//define 16 bit input
-	input [7:0] PC;
+	input [8:0] PC;
 	
 	//declare intermediate wires
 	wire[15:0] data_in, data_out, in, sout, Ain, Bin, out, A2MUX;
@@ -19,7 +19,7 @@ module datapath(/*datapath_in, */mdata, sximm8, sximm5, PC, writenum, write, rea
 	//assign mdata = {16{1'b0}};
 	//assign PC = {8{1'b0}};
 	
-	Four_IN_Mux inMuxNew(.mdata(mdata), .sximm8(sximm8), .PC16({8'b0,PC}), .C(datapath_out), .vsel(vsel), .out(data_in));
+	Four_IN_Mux inMuxNew(.mdata(mdata), .sximm8(sximm8), .PC16({7'b0,PC}), .C(datapath_out), .vsel(vsel), .out(data_in));
 
 	regfile REGFILE(data_in, writenum, write, readnum, clk, data_out);		//instantiate REGFILE
 	
