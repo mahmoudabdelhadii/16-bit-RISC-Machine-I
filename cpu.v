@@ -27,7 +27,7 @@
 `define BX1 5'b10011
 `define BX2 5'b10101
 `define BX3 5'b10111
-`define BLX 5'B11101
+`define BLX 5'b11101
 
 `define BEQ 5'b10010
 `define BNE 5'b10100
@@ -159,7 +159,7 @@ input[1:0] op;
 input reset;
 
 
-input [2:0]condition;
+input [2:0] condition;
 input N,V,Z;
 input[2:0] Z_out;
 output  reg HALTLED;  //LEDR[8]
@@ -168,7 +168,7 @@ output[11:0] out;
 output addr_sel,load_pc,reset_pc,load_addr, load_ir;
 output [1:0] mem_cmd;
 
-output reg [1:0]psel;
+output reg [1:0] psel;
 
 reg[11:0] out;
 reg addr_sel,load_pc,reset_pc,load_addr, load_ir;
@@ -202,6 +202,7 @@ always@ (posedge clk) begin
 		{`decode,9'b0_011_00_xxx} : state = `LA;	//LDR
 		{`decode,9'b0_100_00_xxx} : state = `LA;	//STR
 		{`decode,9'b0_111_xx_xxx} : state = `HALT;	//HALT
+		
 		{`decode,9'b0_001_00_000} : state = `B;
 		{`decode,9'b0_001_00_001} : state = `BEQ;
 		{`decode,9'b0_001_00_010} : state = `BNE;
@@ -256,7 +257,7 @@ always@ (posedge clk) begin
 		{`LA,9'b0_xxx_xx_xxx} : state = `ALU;	//always goes to ALU
 		
 		//state 00110 ALU operations
-		{`ALU,9'b0_101_01_xxx} : state = `regW;	//CMP - IF1
+		{`ALU,9'b0_101_01_xxx} : state = `IF1;	//CMP - IF1
 		{`ALU,9'b0_110_00_xxx} : state =`regW;	//writereg
 		{`ALU,9'b0_101_00_xxx} : state = `regW;	//writereg
 		{`ALU,9'b0_101_1x_xxx} : state = `regW;	//writereg
@@ -293,14 +294,14 @@ always@ (posedge clk) begin
 		default : state = 5'bxxxxx;
 	endcase
 	
-	case ({state,N,V,Z})
+	case ({state,Z_out})
 
 		//reset
 		{`reset,3'bxxx} : begin 
 		out = 12'b000_00000000_0;
 			//w = 2'b01;
-		reset_pc = 1;
-		load_pc  = 1;
+		reset_pc = 1'b1;
+		load_pc  = 1'b1;
 		HALTLED=1'b0;
 		end
 		
@@ -308,8 +309,8 @@ always@ (posedge clk) begin
 		{`IF1,3'bxxx} : begin
 		out = 12'b000_00000000_0;
 		reset_pc = 1'b0;
-		load_pc = 0;
-		addr_sel = 1;
+		load_pc = 1'b0;
+		addr_sel = 1'b1;
 		mem_cmd = `MREAD;
 		end
 		
@@ -323,13 +324,14 @@ always@ (posedge clk) begin
 		//Update PC
 		{`updatePC,3'bxxx} : begin
 		mem_cmd = 2'b0;
-		load_ir = 0;
-		load_pc = 1;
+		load_ir = 1'b0;
+		load_pc = 1'b1;
+		psel = 2'b00;
 		end
 
 		//Decode
 		{`decode, 3'bxxx}: begin
-			load_pc = 0;
+			load_pc = 1'b0;
 			out = 12'b0000000_11_000;	//defaults selects to 1
 		end
 		

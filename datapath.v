@@ -23,7 +23,7 @@ module datapath(/*datapath_in, */mdata, sximm8, sximm5, PC, writenum, write, rea
 
 	regfile REGFILE(data_in, writenum, write, readnum, clk, data_out);		//instantiate REGFILE
 	
-	ALU U2 (.Ain(Ain), .Bin(Bin), .ALUop(ALUop), .out(out), .Z(Z_internal));			//instantiate ALU U2
+	ALU U2 (.Ain(Ain), .Bin(Bin), .ALUop(ALUop), .out(out), .status(Z_internal));			//instantiate ALU U2
 	
 	vDFFE #(16) A (clk, loada, data_out, A2MUX);							//instantiate register A
 	
