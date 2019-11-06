@@ -55,6 +55,8 @@ wire [11:0] FSM_out;
 wire [15:0] Ireg_out;
 wire [8:0] dataAddress;
 
+wire[8:0] nsximm8;
+
 wire[2:0] Z_out;
 
 wire [1:0]psel; //new for PC mux
@@ -66,13 +68,13 @@ wire [8:0] next_pc,PC, intoOne,afterDataAddress;
 
 wire HALTLED;
 
-assign intoOne = (psel==2'b11)?(PC+1+sximm8):(psel==2'b00)?PC + 1:(psel==2'b10)?write_data:2'bxx;
+assign intoOne = (psel==2'b11)?(PC+9'b000000001+nsximm8):(psel==2'b00)?PC + 9'b000000001:(psel==2'b10)?write_data:2'bxx;
 
 vDFFE #(16) Instruction_Register(.clk(clk), .en(load_ir), .in(read_data), .out(Ireg_out)) ;
 
 Instruction_Dec ID1(.in(Ireg_out), .nsel(FSM_out[11:9]),	//inputs
 					.opcode(opcode), .op(op),				//to state machine
-					.shift(shift), .sximm8(sximm8), .sximm5(sximm5), .readOrWrite(readAndwrite),.condition(condition));	//to Datapath
+					.shift(shift), .sximm8(sximm8), .sximm5(sximm5), .readOrWrite(readAndwrite),.condition(condition),.nsximm8(nsximm8));	//to Datapath
 
 FSM stateMachine(.opcode(opcode),.op(op),.reset(reset),.out(FSM_out),.clk(clk),.mem_cmd(mem_cmd), .addr_sel(addr_sel),.load_pc(load_pc),.reset_pc(reset_pc),.load_addr(load_addr), .load_ir(load_ir),.Z_out(Z_out),.N(N),.V(V),.Z(Z),.condition(condition),.psel(psel),.HALTLED(HALTLED));
 
@@ -95,7 +97,7 @@ MUX #(9) memSelect(.a(PC), .b(dataAddress),.sel(addr_sel),.out(mem_addr));
 
 
 endmodule
-module Instruction_Dec(in, nsel, opcode, op, shift, sximm8, sximm5, readOrWrite,condition);
+module Instruction_Dec(in, nsel, opcode, op, shift, sximm8, sximm5, readOrWrite,condition, nsximm8);
 input [15:0] in;
 input [2:0] nsel;
 
@@ -104,6 +106,7 @@ output [2:0] condition;
 reg [1:0] shift;
 output [2:0] opcode;
 output [15:0] sximm8; //specify datapath size
+output[8:0] nsximm8;
 output [15:0] sximm5;
 output [2:0] readOrWrite; //check wire/reg here - writenum and readnum
 
@@ -114,6 +117,7 @@ assign opcode = in[15:13];
 assign op = in [12:11];
 assign condition = in[10:8];
 assign sximm8 = {{8{in[7]}}, in [7:0] };
+assign nsximm8 = {in[7], in [7:0] };
 assign sximm5 = {{11{in[4]}}, in [4:0] };
 assign readOrWrite = rORw;
 
@@ -207,7 +211,7 @@ always@ (posedge clk) begin
 		{`decode,9'b0_001_00_001} : state = `BEQ;
 		{`decode,9'b0_001_00_010} : state = `BNE;
 		{`decode,9'b0_001_00_011} : state = `BLT;
-		{`decode,9'b0_010_00_100} : state = `BLE;
+		{`decode,9'b0_001_00_100} : state = `BLE;
 
 		{`decode,9'b0_010_11_xxx} : state = `BL1;
 		{`decode,9'b0_010_00_xxx} : state = `BX1;
@@ -316,9 +320,9 @@ always@ (posedge clk) begin
 		
 		//IF2
 		{`IF2,3'bxxx} : begin
-		addr_sel = 1;
+		addr_sel = 1'b1;
 		mem_cmd = `MREAD;
-		load_ir = 1;
+		load_ir = 1'b1;
 		end
 
 		//Update PC
@@ -402,42 +406,55 @@ always@ (posedge clk) begin
 
 		{`BEQ,3'bxx1}: begin  //BEQ  Z=1
 		psel= 2'b11;
+		load_pc =1'b1;
 		end
 		{`BEQ,3'bxx0}: begin  //BEQ  Z=0
 		psel= 2'b00;
+		load_pc =1'b1;
 		end
 
 		{`BNE,3'bxx0}: begin  //BNE  Z=0
 		psel= 2'b11;
+		load_pc =1'b1;
 		end
 		{`BNE,3'bxx1}: begin  //BNE  Z=0
 		psel= 2'b00;
+		load_pc =1'b1;
 		end
 
 		{`BLT,3'b10x}: begin  //BLT N!=V
 		psel= 2'b11;
+		load_pc =1'b1;
+		//load_pc =1'b1; //??    do not know
 		end
 		{`BLT,3'b01x}: begin  //BLT N!=V
 		psel= 2'b11;
+		load_pc =1'b1;
 		end
 
 		{`BLT,3'b11x}: begin  //BLT N!=V
 		psel= 2'b00;
+		load_pc =1'b1;
 		end
+		
 		{`BLT,3'b00x}: begin  //BLT N!=V
 		psel= 2'b00;
+		load_pc =1'b1;
 		end
 
 		{`BLE,3'b10x}: begin  // BLE N!=V 
 		psel= 2'b11;
+		load_pc =1'b1;
 		end
 
 		{`BLE,3'b01x}: begin  // BLE N!=V 
 		psel= 2'b11;
+		load_pc =1'b1;
 		end
 
 		{`BLE,3'bxx1}: begin  // BLE  Z=1
 		psel= 2'b11;
+		load_pc =1'b1;
 		end
 		{`BL1,3'bxxx}: begin  // BL  R7=PC
 		out = 12'b001_00000000_1;
@@ -464,7 +481,7 @@ always@ (posedge clk) begin
 	
 		end
 
-		default : out = 12'b000000000000;
+		default : {out,psel} = {12'b000000000000,2'bxx};
 		
 			
 		
