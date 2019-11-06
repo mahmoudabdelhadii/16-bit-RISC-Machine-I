@@ -23,7 +23,7 @@ leaf_example:
     MOV R0,R4         // R0 = return value (g + h) - (i + j) 
     LDR R5,[R6,#-1]   // restore saved contents of R5
     LDR R4,[R6]       // restore saved contents of R4
-                        // return control to caller
+    BX  R7                  // return control to caller
 stack_begin:
     .word 0xFF
 result:

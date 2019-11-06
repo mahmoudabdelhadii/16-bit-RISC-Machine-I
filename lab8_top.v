@@ -21,7 +21,7 @@ wire doutToggle, write, mwrite;
 wire Z, N, V;
 
 wire HALTLED;
-
+wire reset;
 wire toggleSwitchInput, toggleLEDOutput;
 //wire clk = ~KEY[0];
 assign reset = ~KEY[1];
@@ -49,10 +49,10 @@ assign doutToggle = msel & mread;
 
 triStateBuffer doutBuffer(dout, doutToggle, read_data);
 
-assign toggleSwitchInput = (mem_cmd == `MREAD && mem_addr == 9'h140 ? 1 : 0);
+assign toggleSwitchInput = (mem_cmd == `MREAD && mem_addr == 9'h140 ? 1'b1 : 1'b0);
 triStateBuffer #(16) SwitchBuffer ({8'b0,SW[7:0]},toggleSwitchInput,read_data);
 
-assign toggleLEDOutput = (mem_cmd == `MWRITE && mem_addr == 9'h100 ? 1 : 0);
+assign toggleLEDOutput = (mem_cmd == `MWRITE && mem_addr == 9'h100 ? 1'b1 : 1'b0);
 vDFFE #(8) LEDtoggle (clk, toggleLEDOutput, write_data[7:0], LEDR[7:0]);
 //module vDFFE(clk, en, in, out) ;
 //parameter n = 1;  // width of register

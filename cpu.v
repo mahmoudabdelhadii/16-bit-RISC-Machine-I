@@ -69,7 +69,7 @@ wire [8:0] next_pc,PC, intoOne,afterDataAddress;
 
 wire HALTLED;
 
-assign intoOne = (psel==2'b11)?(PC+9'b000000001+nsximm8):(psel==2'b00)?PC + 9'b000000001:(psel==2'b10)?write_data:2'bxx;
+assign intoOne = (psel==2'b11)?(PC[8:0]+nsximm8):(psel==2'b00)?PC[8:0] + 9'b000000001:(psel==2'b10)?write_data:2'bxx;
 
 vDFFE #(16) Instruction_Register(.clk(clk), .en(load_ir), .in(read_data), .out(Ireg_out)) ;
 
@@ -216,7 +216,7 @@ always@ (posedge clk) begin
 
 		{`decode,9'b0_010_11_xxx} : state = `BL1;
 		{`decode,9'b0_010_00_xxx} : state = `BX1;
-		{`decode,9'b0_010_10_xxx} : state = `BL1;
+		{`decode,9'b0_010_10_xxx} : state = `BL1; //BLX
 		
 		
 		//  ^^^ changed them to start taking messages from the decode state
@@ -230,6 +230,7 @@ always@ (posedge clk) begin
 
 		//state 00001 writeImm
 		{`WImm,9'b0_xxx_xx_xxx} : state = `IF1; 	//IF1
+		
 
 		//state BXX to IF1
 		{`B,9'b0_xxx_xx_xxx} : state = `IF1;   //stage 1
@@ -265,14 +266,14 @@ always@ (posedge clk) begin
 		{`LA,9'b0_xxx_xx_xxx} : state = `ALU;	//always goes to ALU
 		
 		//state 00110 ALU operations
-	{`ALU,9'b0_101_01_xxx} : state = `IF1;	//CMP - IF1
+		{`ALU,9'b0_101_01_xxx} : state = `IF1;	//CMP - IF1
 		{`ALU,9'b0_110_00_xxx} : state =`regW;	//writereg
 		{`ALU,9'b0_101_00_xxx} : state = `regW;	//writereg
 		{`ALU,9'b0_101_1x_xxx} : state = `regW;	//writereg
 		{`ALU,9'b0_011_00_xxx} : state = `readM;	//LDR - ReadMem
 		{`ALU,9'b0_100_00_xxx} : state = `setADR;	//STR - SetARD
 
-		{`buffer,9'b0_101_01_xxx} : state = `IF1;
+		//{`buffer,9'b0_101_01_xxx} : state = `IF1;
 		
 		//state 00111 writeReg
 		{`regW,9'b0_xxx_xx_xxx} : state = `IF1;
@@ -348,6 +349,7 @@ always@ (posedge clk) begin
 		//writeImm
 		{`WImm,3'bxxx} : begin
 			out = 12'b001_0000_10_00_1;
+			psel = 2'b00;
 		end
 		
 		//loadB
@@ -361,11 +363,12 @@ always@ (posedge clk) begin
 		end
 		//ALU instructions
 		{`ALU,3'bxxx} : begin 
-		out = {3'b000_,({opcode,op}==5'b10101 ? 1 : 0),1'b1,op,out[4],out[3],3'b00_0};
+		out = {3'b000_,({opcode,op}==5'b10101 ? 1'b1 : 1'b0),1'b1,op,out[4],out[3],3'b00_0};
 		end
 		//writeReg
 		{`regW,3'bxxx} : begin
 		out = 12'b010_00000000_1;
+		psel = 2'b00;
 		end
 		//readMem
 		{`readM,3'bxxx}: begin
@@ -399,11 +402,13 @@ always@ (posedge clk) begin
 		//Mwrite
 		{`Mwrite,3'bxxx} : begin
 		mem_cmd = `MWRITE;
+		psel = 2'b00;
 		end
 		
 		//HALT
 		{`HALT,3'bxxx} : begin
 		HALTLED = 1'b1;
+		
 		end
 		
 		{`B,3'bxxx}: begin
@@ -432,7 +437,7 @@ always@ (posedge clk) begin
 		{`BLT,3'b10x}: begin  //BLT N!=V
 		psel= 2'b11;
 		load_pc =1'b1;
-		load_pc =1'b1; //??    do not know
+		//load_pc =1'b1; //??    do not know
 		end
 		{`BLT,3'b01x}: begin  //BLT N!=V
 		psel= 2'b11;
@@ -441,12 +446,12 @@ always@ (posedge clk) begin
 
 		{`BLT,3'b11x}: begin  //BLT N!=V
 		psel= 2'b00;
-		load_pc =1'b1;
+		//load_pc =1'b1;
 		end
 		
 		{`BLT,3'b00x}: begin  //BLT N!=V
 		psel= 2'b00;
-		load_pc =1'b1;
+		//load_pc =1'b1;
 		end
 
 		{`BLE,3'b10x}: begin  // BLE N!=V 
@@ -464,11 +469,12 @@ always@ (posedge clk) begin
 		load_pc =1'b1;
 		end
 		{`BL1,3'bxxx}: begin  // BL  R7=PC
-		out = 12'b001_00000000_1;
+		out = 12'b001_00000100_1;
 		end
 
 		{`BL2,3'bxxx}: begin  // BL  PC PC+1+sx(imm8)
 		psel=2'b11;
+		load_pc =1'b1;
 		end
 
 		
