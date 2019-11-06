@@ -28,6 +28,7 @@
 `define BX2 5'b10101
 `define BX3 5'b10111
 `define BLX 5'b11101
+`define buffer 5'b11001
 
 `define BEQ 5'b10010
 `define BNE 5'b10100
@@ -216,7 +217,10 @@ always@ (posedge clk) begin
 		{`decode,9'b0_010_11_xxx} : state = `BL1;
 		{`decode,9'b0_010_00_xxx} : state = `BX1;
 		{`decode,9'b0_010_10_xxx} : state = `BL1;
+
+		{`BLT,9'b0_001_00_011} : state = `buffer;
 		
+		{`buffer,9'b0_001_00_011} : state = `IF1;
 		//  ^^^ changed them to start taking messages from the decode state
 
 		//state 00100 Load B
@@ -233,7 +237,8 @@ always@ (posedge clk) begin
 		{`B,9'b0_xxx_xx_xxx} : state = `IF1;   //stage 1
 		{`BEQ,9'b0_xxx_xx_xxx} : state = `IF1;
 		{`BNE,9'b0_xxx_xx_xxx} : state = `IF1;
-		{`BLT,9'b0_xxx_xx_xxx} : state = `IF1;
+		
+		//{`BLT,9'b0_xxx_xx_xxx} : state = `IF1;
 		{`BLE,9'b0_xxx_xx_xxx} : state = `IF1;
 
 		//BL1 TO BL2
@@ -261,12 +266,14 @@ always@ (posedge clk) begin
 		{`LA,9'b0_xxx_xx_xxx} : state = `ALU;	//always goes to ALU
 		
 		//state 00110 ALU operations
-		{`ALU,9'b0_101_01_xxx} : state = `IF1;	//CMP - IF1
+		{`ALU,9'b0_101_01_xxx} : state = `buffer;	//CMP - IF1
 		{`ALU,9'b0_110_00_xxx} : state =`regW;	//writereg
 		{`ALU,9'b0_101_00_xxx} : state = `regW;	//writereg
 		{`ALU,9'b0_101_1x_xxx} : state = `regW;	//writereg
 		{`ALU,9'b0_011_00_xxx} : state = `readM;	//LDR - ReadMem
 		{`ALU,9'b0_100_00_xxx} : state = `setADR;	//STR - SetARD
+
+		{`buffer,9'b0_101_01_xxx} : state = `IF1;
 		
 		//state 00111 writeReg
 		{`regW,9'b0_xxx_xx_xxx} : state = `IF1;
@@ -298,7 +305,7 @@ always@ (posedge clk) begin
 		default : state = 5'bxxxxx;
 	endcase
 	
-	case ({state,Z_out})
+	casex ({state,Z_out})
 
 		//reset
 		{`reset,3'bxxx} : begin 
@@ -422,6 +429,11 @@ always@ (posedge clk) begin
 		load_pc =1'b1;
 		end
 
+		{`buffer,3'b10x}: begin  //BLT N!=V
+		
+		load_pc =1'b1;
+		//load_pc =1'b1; //??    do not know
+		end
 		{`BLT,3'b10x}: begin  //BLT N!=V
 		psel= 2'b11;
 		load_pc =1'b1;
